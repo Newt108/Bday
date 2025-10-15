@@ -88,6 +88,7 @@ body {
     box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
     z-index: 5;
     max-width: 90%;
+    margin: 20px;
 }
 
 .title {
@@ -140,17 +141,23 @@ body {
 }
 
 .music-control {
-    position: absolute;
+    position: fixed; /* Changed from absolute to fixed */
     bottom: 20px;
-    right: 25px;
-    background: rgba(255, 255, 255, 0.5);
+    right: 20px;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
-    padding: 10px;
+    padding: 12px;
     font-size: 1.2rem;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
     transition: transform 0.3s ease;
-    z-index: 10;
+    z-index: 1000; /* Very high z-index to ensure it's always on top */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 105, 180, 0.3);
 }
 
 .music-control:hover {
@@ -231,6 +238,7 @@ body {
     width: 90%;
     max-width: 900px;
     position: relative;
+    padding: 20px 0;
 }
 
 .title {
@@ -341,6 +349,7 @@ body {
     font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-bottom: 20px; /* Added bottom margin for mobile */
 }
 
 .next-page-btn:hover {
@@ -353,6 +362,7 @@ body {
     background: linear-gradient(135deg, #fdd3f0, #d5c6ff);
     justify-content: center;
     padding: 20px;
+    overflow-y: auto; /* Allow scrolling if needed */
 }
 
 .cake-container {
@@ -364,8 +374,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100%;
+    justify-content: space-between; /* Better space distribution */
+    min-height: 80vh; /* Minimum height to ensure content fits */
+    padding: 40px 20px; /* Added padding */
 }
 
 .cake-title {
@@ -417,13 +428,15 @@ body {
     background: linear-gradient(90deg, #ff6ec4, #7873f5);
     color: white;
     border: none;
-    padding: 12px 30px;
+    padding: 14px 35px; /* Increased padding for better touch */
     border-radius: 25px;
     font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     animation: shimmer 2.5s infinite linear;
     margin-top: 30px;
+    margin-bottom: 20px; /* Added bottom margin */
+    min-height: 50px; /* Minimum height for touch */
 }
 
 .cake-btn:hover {
@@ -447,6 +460,7 @@ body {
     text-align: center;
     width: 100%;
     max-width: 500px;
+    padding: 20px;
 }
 
 .light-title {
@@ -470,6 +484,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    min-height: 50px; /* Minimum height for touch */
 }
 
 .glow-btn:hover {
@@ -598,27 +613,77 @@ img {
     .page {
         padding: 15px;
         justify-content: flex-start;
-        padding-top: 80px;
+        padding-top: 60px;
+        padding-bottom: 80px; /* Added bottom padding for mobile */
+        overflow-y: auto;
     }
+    
     .title,
     .mirror-title,
     .cake-title {
         font-size: 2rem !important;
+        margin-bottom: 20px;
     }
+    
     .card {
         padding: 30px 20px !important;
         margin: 10px;
     }
+    
     .btn {
         padding: 12px 25px;
         font-size: 1rem;
+        min-height: 44px; /* Minimum touch target size */
     }
+    
     .slide {
         width: 200px;
         height: 264px;
     }
+    
     .nav-btn {
         font-size: 1.5rem;
+        padding: 10px;
+    }
+    
+    /* Music button mobile fixes */
+    .music-control {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+        padding: 10px;
+    }
+    
+    /* Cake page mobile fixes */
+    .cake-container {
+        min-height: 70vh;
+        padding: 20px 15px;
+        justify-content: space-around;
+    }
+    
+    .cake-title {
+        margin-bottom: 20px;
+    }
+    
+    .cake-btn {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding: 12px 25px;
+        min-height: 44px;
+    }
+    
+    /* Carousel mobile fixes */
+    .container {
+        padding: 10px 0;
+    }
+    
+    .download-btn,
+    .next-page-btn {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        min-height: 44px;
     }
 }
 
@@ -628,11 +693,49 @@ img {
         font-size: 1.5em;
         text-align: center;
     }
+    
     .slide {
         width: 180px;
         height: 238px;
     }
+    
     .slides {
         gap: 10px;
+    }
+    
+    .music-control {
+        bottom: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .cake-container {
+        padding: 15px 10px;
+    }
+    
+    .cake-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    
+    .page {
+        padding-top: 50px;
+        padding-bottom: 70px;
+    }
+}
+
+/* Safe area support for notched phones */
+@supports(padding: max(0px)) {
+    .page {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+    
+    .music-control {
+        right: max(15px, env(safe-area-inset-right));
+        bottom: max(15px, env(safe-area-inset-bottom));
     }
 }
