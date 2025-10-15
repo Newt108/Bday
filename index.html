@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page active" id="page1">
+        <canvas id="confetti"></canvas>
+        <div class="card">
+            <h1 class="title">Happy Birthday Sarni Badmosh! 💖</h1>
+            <div class="icons">💞 ✨ 💕</div>
+            <p class="subtitle">To the most amazing person in my life</p>
+            <p class="quote"> "Every moment with you is a gift, and today we celebrate the greatest gift of all — <b>YOU!</b> 🌹" </p>
+            <button class="btn start-btn" onclick="transitionToPage(2)">🎁 Begin Your Surprise!</button>
+        </div>
+        <div class="music-control">🎵</div>
+    </div>
+
+    <div class="page" id="page2">
+        <div class="center">
+            <h1 class="mirror-title">Mirror of Memories</h1>
+            <div class="memory-box" id="memoryBox">
+                <div class="heart-icon">💖</div>
+                <p>Click to unlock memories</p>
+            </div>
+        </div>
+        <div class="floating-hearts" id="floatingHearts"></div>
+    </div>
+
+    <div class="page" id="page3">
+        <div class="container">
+            <h1 class="title">Mirror of Memories 💖</h1>
+            <div class="carousel" id="carousel">
+                <button class="nav-btn" onclick="moveSlide(-1)">❮</button>
+                <div class="slides" id="slides">
+                    <div class="slide"><img src="img1.jpg" alt="Photo 1"></div>
+                    <div class="slide"><img src="img2.jpg" alt="Photo 2"></div>
+                    <div class="slide"><img src="img3.jpg" alt="Photo 3"></div>
+                    <div class="slide"><img src="img4.jpg" alt="Photo 4"></div>
+                    <div class="slide"><img src="img5.jpg" alt="Photo 5"></div>
+                    <div class="slide"><img src="img6.jpg" alt="Photo 6"></div>
+                    <div class="slide"><img src="img7.jpg" alt="Photo 7"></div>
+                    <div class="slide"><img src="img8.jpg" alt="Photo 8"></div>
+                </div>
+                <button class="nav-btn" onclick="moveSlide(1)">❯</button>
+            </div>
+            <p class="caption" id="caption">Our love story continues...</p>
+            <button class="download-btn">💾 Download this memory</button>
+            <button class="next-page-btn" onclick="transitionToPage(4)">Continue to Next Page →</button>
+        </div>
+    </div>
+
+    <div class="page" id="page4">
+        <canvas id="confetti2"></canvas>
+        <div class="cake-container">
+            <h1 class="cake-title">Let's Celebrate! 🎂</h1>
+            <div class="cake">
+                <div class="layer layer3"></div>
+                <div class="layer layer2"></div>
+                <div class="layer layer1"></div>
+            </div>
+            <button class="cake-btn" onclick="transitionToPage(5)">Continue to Next Page →</button>
+        </div>
+    </div>
+
+    <div class="page" id="page5">
+        <div class="light-container">
+            <h1 class="light-title">Light Up My Life</h1>
+            <button id="lightBtn" class="glow-btn">Turn the Lights On ✨</button>
+        </div>
+    </div>
+
+    <div class="page" id="page6">
+        <div class="header">
+            🎉 Happy Birthday Madam Ji 🎉
+        </div>
+        <div class="final-card">
+            <h2>Dear Madam Ji,</h2>
+            <p> Today, I'm celebrating more than just your birthday—I'm celebrating the incredible person you are and the genuine way you show up for the people around you. </p>
+            <p> You have this amazing ability to make even a random Tuesday feel like something special. It's your **unfiltered sense of humor** and that quiet confidence that really stand out; you inspire us just by being completely yourself, no filter needed. </p>
+            <p> I hope this next year of your life is filled with the kind of moments that make you feel truly alive—new adventures, deep contentment, and all the peace and happiness you deserve. You really are the best. </p>
+            <p class="wish"> Wishing you the most wonderful birthday! 🎂✨ </p>
+            <p class="footer"> With love and warm wishes. </p>
+        </div>
+        <button class="btn" onclick="transitionToPage(1)" style="margin-top: 20px;">Start Over</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
