@@ -1,0 +1,638 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    transition: background 1s ease;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+    pointer-events: none;
+    overflow-y: auto;
+}
+
+.page.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.page.exit {
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+.btn {
+    background: linear-gradient(90deg, #ff6ec4, #ff3385);
+    border: none;
+    color: white;
+    padding: 14px 35px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 192, 203, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.6);
+}
+
+/* Confetti Canvas */
+#confetti,
+#confetti2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* --- Page 1 Styles --- */
+#page1 {
+    background: linear-gradient(135deg, #ffc0cb, #ff91a4);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px 60px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
+    z-index: 5;
+    max-width: 90%;
+}
+
+.title {
+    font-size: 2.8rem;
+    color: #ff4d88;
+    text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    margin-bottom: 10px;
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ff6ec4, 0 0 20px #ff80b5;
+    }
+    to {
+        text-shadow: 0 0 20px #ff3385, 0 0 30px #ff4da6;
+    }
+}
+
+.icons {
+    font-size: 1.8rem;
+    margin: 10px 0 25px;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #5a295a;
+    margin-bottom: 10px;
+}
+
+.quote {
+    font-size: 1rem;
+    color: #5a295a;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.start-btn {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.music-control {
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.music-control:hover {
+    transform: scale(1.1);
+}
+
+/* --- Page 2 Styles (Mirror Page) --- */
+#page2 {
+    background: linear-gradient(135deg, #ffe6f7, #e6d0ff);
+}
+
+.mirror-title {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #ff5fa2, #a349ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+}
+
+.memory-box {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 120, 200, 0.5);
+    padding: 60px;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    max-width: 90%;
+}
+
+.memory-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 100, 200, 0.7);
+}
+
+.memory-box p {
+    font-size: 1.2rem;
+    color: #4a0072;
+    font-weight: 500;
+}
+
+.heart-icon {
+    font-size: 2.5rem;
+    animation: pulse 1.5s infinite;
+    margin-bottom: 10px;
+}
+
+.floating-hearts span {
+    position: absolute;
+    font-size: 1.2rem;
+    color: #ff5fa2;
+    animation: float 8s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* --- Page 3 Styles (Carousel Page) --- */
+#page3 {
+    background: linear-gradient(135deg, #ffe4ec, #e5d4ff);
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    position: relative;
+}
+
+.title {
+    font-size: 2.8rem;
+    background: linear-gradient(90deg, #ff6ec4, #7873f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+    animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.4); }
+    100% { filter: brightness(1); }
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.6s cubic-bezier(0.55, 0.09, 0.68, 0.53);
+}
+
+.slide {
+    width: 250px;
+    height: 330px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    opacity: 0.5;
+    transform: scale(0.85);
+    transition: all 0.6s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 10px 50px rgba(255, 105, 180, 0.4);
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #ff6ec4;
+    cursor: pointer;
+    transition: transform 0.3s;
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.nav-btn:first-child {
+    left: 0;
+}
+
+.nav-btn:last-child {
+    right: 0;
+}
+
+.nav-btn:hover {
+    transform: translateY(-50%) scale(1.3);
+}
+
+.caption {
+    margin-top: 25px;
+    font-size: 1.2rem;
+    color: #444;
+    font-style: italic;
+    min-height: 50px;
+    transition: opacity 0.5s;
+}
+
+.download-btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #ff6ec4, #7873f5);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: shimmer 3s infinite linear;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.next-page-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #4ecdc4, #44a08d);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-page-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* --- Page 4 Styles (Cake Page) --- */
+#page4 {
+    background: linear-gradient(135deg, #fdd3f0, #d5c6ff);
+    justify-content: center;
+    padding: 20px;
+}
+
+.cake-container {
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.cake-title {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff6ec4, #7873f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 2.5s infinite linear;
+    margin-bottom: 30px;
+}
+
+.cake {
+    margin: 20px auto;
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.layer {
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+.layer1 {
+    width: 200px;
+    height: 40px;
+    background: #ff4d8b;
+}
+
+.layer2 {
+    width: 150px;
+    height: 35px;
+    background: #ff80b5;
+}
+
+.layer3 {
+    width: 100px;
+    height: 30px;
+    background: #ffb6d9;
+}
+
+.cake-btn {
+    background: linear-gradient(90deg, #ff6ec4, #7873f5);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: shimmer 2.5s infinite linear;
+    margin-top: 30px;
+}
+
+.cake-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Page 5 Styles (Light Switch Page) --- */
+#page5 {
+    background-color: #1c2230;
+    transition: background 1s ease;
+    color: white;
+}
+
+#page5.light-on {
+    background-color: #f9f7e8;
+    color: #111;
+}
+
+.light-container {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.light-title {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: "Dancing Script", cursive;
+}
+
+#page5.light-on .light-title {
+    color: #111;
+}
+
+.glow-btn {
+    background: linear-gradient(45deg, #c31432, #240b36);
+    border: none;
+    color: #fff;
+    padding: 14px 28px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.glow-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+#page5.light-on .glow-btn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: #fff;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+}
+
+/* --- Page 6 Styles (Final Message Page) --- */
+#page6 {
+    background: linear-gradient(135deg, #8a2be2, #ff69b4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #333;
+    padding: 20px;
+}
+
+.header {
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 90%;
+}
+
+.final-card {
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    max-height: 70vh;
+    margin-bottom: 20px;
+}
+
+.final-card h2 {
+    font-family: 'Great Vibes', cursive;
+    color: #a020f0;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #a020f0;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.final-card p {
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+.final-card .wish {
+    color: #d63384;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.3rem;
+}
+
+.final-card .footer {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    color: #8a2be2;
+    font-family: 'Great Vibes', cursive;
+}
+
+/* Balloon Animation */
+.balloon {
+    position: absolute;
+    width: 25px;
+    height: 35px;
+    background-color: #ffca3a;
+    border-radius: 50%;
+    animation: floatBalloon 6s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+@keyframes floatBalloon {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* --- Image Styles --- */
+img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 18;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+    .page {
+        padding: 15px;
+        justify-content: flex-start;
+        padding-top: 80px;
+    }
+    .title,
+    .mirror-title,
+    .cake-title {
+        font-size: 2rem !important;
+    }
+    .card {
+        padding: 30px 20px !important;
+        margin: 10px;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    .slide {
+        width: 200px;
+        height: 264px;
+    }
+    .nav-btn {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title,
+    .mirror-title {
+        font-size: 1.5em;
+        text-align: center;
+    }
+    .slide {
+        width: 180px;
+        height: 238px;
+    }
+    .slides {
+        gap: 10px;
+    }
+}
